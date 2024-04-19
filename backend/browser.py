@@ -8,7 +8,7 @@ class BrowserAutomation:
     def __init__(self):
         self.browser = None
 
-    def open_browser(self, url="https://developers.google.com/"):
+    def open_browser(self, url):
         if self.browser:
             self.browser.quit()
         options = Options()
