@@ -3,6 +3,7 @@ from fastapi.websockets import WebSocket, WebSocketDisconnect
 from starlette.middleware.cors import CORSMiddleware
 from browser import BrowserAutomation
 from typing import Optional
+from manager import manager
 
 app = FastAPI()
 
@@ -44,7 +45,6 @@ async def websocket_ep(websocket: WebSocket, client_id: Optional[str] = None):
         while True:
             data = await websocket.receive_json()
             event = data["event"]
-            print(event)
     except WebSocketDisconnect:
         print("Disconnecting...")
         await manager.disconnect(client_id)
