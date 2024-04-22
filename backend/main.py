@@ -6,6 +6,7 @@ from typing import Optional
 from manager import manager
 from gemini import *
 import PIL.Image
+import asyncio
 
 app = FastAPI()
 browser = BrowserAutomation()
@@ -36,7 +37,6 @@ async def navigate_ui(browser, websocket):
                 url = browser.get_url()
                 print(f"URL: {url}")
                 nav = navigate_check(active_prompt, url)
-                print(nav)
 
                 if nav["type"] == "navigate":
                     await manager.send_personal_message(
@@ -137,5 +137,3 @@ async def websocket_ep(websocket: WebSocket, client_id: Optional[str] = None):
     except WebSocketDisconnect:
         print("Disconnecting...")
         await manager.disconnect(client_id)
-        
-    
