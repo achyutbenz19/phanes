@@ -54,8 +54,7 @@ def interpret(prompt, url, html_string, img):
         If current page is the requested page, output selectors list.
         user: {prompt}
     """
-    
-    response = generate_content_with_cycling_keys(
+    response = generate_content(
         system_prompt_interpret + "\n\n" + user_prompt, img
     )
 
@@ -110,7 +109,7 @@ def generate(html, selectors, url):
             dom_elements += "\n"
         else:
             dom_elements += f"src: {element['selector']}\n"
-    generated_ui = generate_content_with_cycling_keys(
+    generated_ui = generate_content(
         dom_elements
         + "\n\n"
         + system_prompt_generate

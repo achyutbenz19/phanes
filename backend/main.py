@@ -5,8 +5,10 @@ from browser import BrowserAutomation
 from typing import Optional
 from manager import manager
 from gemini import *
+import PIL.Image
 
 app = FastAPI()
+browser = BrowserAutomation()
 
 origins = [
     "http://localhost:3000",
@@ -26,8 +28,6 @@ async def navigate_ui(browser, websocket):
     interpret_flag = False
     generate_flag = False
     max_tries = 3
-    
-    browser = BrowserAutomation()
 
     while (not nav_check_flag or not interpret_flag or not generate_flag):
         max_tries -= 1
@@ -54,9 +54,9 @@ async def navigate_ui(browser, websocket):
                 nav_check_flag = True
 
             if not interpret_flag:
-                url = browser.getUrl()
+                url = browser.get_url()
                 html = browser.scrape()
-                browser.take_screenshot()
+                browser.take_screenshot("website.png")
                 img = PIL.Image.open("website.png")
 
                 print("Gemini is interpreting...")
@@ -71,7 +71,6 @@ async def navigate_ui(browser, websocket):
                     websocket,
                 )
                 selectors = interpret(active_prompt, url, html, img)
-                print(selectors)
                 interpret_flag = True
 
             if not generate_flag:
@@ -124,15 +123,13 @@ async def websocket_ep(websocket: WebSocket, client_id: Optional[str] = None):
         return
     
     await manager.connect(websocket, client_id)
-    browser = BrowserAutomation()
+    browser.open_browser()
     try:
         data = await websocket.receive_json()
         print(data)
         event = data["event"]
         
-        if event == "start":
-            browser.open_browser(url)
-        elif event == "prompt":
+        if event == "prompt":
             active_prompt = data["prompt"]
             await navigate_ui(browser, websocket)
             
