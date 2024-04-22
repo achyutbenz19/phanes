@@ -46,7 +46,6 @@ border: 3px solid #DEDEDE;
 background: #FFF;
 """
 
-# goal: "type": "src", "selector": "some url I think"
 system_prompt_interpret = """
 You are a web browser navigation assistant that trims and scrapes relevant portions of the UI for a user. Relevant is defined as the portion of the UI that the user requests for.
 Always output a plan before outputting any jsons.
