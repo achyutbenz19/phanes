@@ -29,9 +29,7 @@ async def navigate_ui(browser, websocket):
     
     browser = BrowserAutomation()
 
-    while (
-        not nav_check_flag or not interpret_flag or not generate_flag and max_tries > 0
-    ):
+    while (not nav_check_flag or not interpret_flag or not generate_flag):
         max_tries -= 1
         try:
             if not nav_check_flag:
@@ -50,15 +48,15 @@ async def navigate_ui(browser, websocket):
                         },
                         websocket,
                     )
-                    browser.navigate(browser, nav["url"])
+                    browser.navigate(nav["url"])
                     print(f"Navigating to {nav['url']}")
                     await asyncio.sleep(1.5)
                 nav_check_flag = True
 
             if not interpret_flag:
-                url = getUrl(browser)
-                html = scrape(browser)
-                take_screenshot(browser)
+                url = browser.getUrl()
+                html = browser.scrape()
+                browser.take_screenshot()
                 img = PIL.Image.open("website.png")
 
                 print("Gemini is interpreting...")
@@ -99,7 +97,10 @@ async def navigate_ui(browser, websocket):
                     websocket,
                 )
                 generate_flag = True
-
+                
+            if max_tries < 0:
+                break
+            
         except Exception as e:
             print(e)
 
@@ -125,17 +126,17 @@ async def websocket_ep(websocket: WebSocket, client_id: Optional[str] = None):
     await manager.connect(websocket, client_id)
     browser = BrowserAutomation()
     try:
-        while True:
-            data = await websocket.receive_json()
-            print(data)
-            event = data["event"]
-            if event == "start":
-                browser.open_browser(url)
-            elif event == "prompt":
-                active_prompt = data["prompt"]
-                await navigate_ui(browser, websocket)
+        data = await websocket.receive_json()
+        print(data)
+        event = data["event"]
+        
+        if event == "start":
+            browser.open_browser(url)
+        elif event == "prompt":
+            active_prompt = data["prompt"]
+            await navigate_ui(browser, websocket)
             
-            await manager.send_personal_message({"event": "done"}, websocket)
+        await manager.send_personal_message({"event": "done"}, websocket)
     except WebSocketDisconnect:
         print("Disconnecting...")
         await manager.disconnect(client_id)
