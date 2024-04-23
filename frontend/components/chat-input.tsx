@@ -3,13 +3,16 @@ import { FormEvent, useState } from "react";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { ArrowUp, Mic } from "lucide-react";
+import { ChatInputProps } from "@/lib/types";
 
-const ChatInput = () => {
+const ChatInput = ({ handleSubmit }: ChatInputProps) => {
   const [message, setMessage] = useState("");
 
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log(message);
+    if (message.trim() !== "") {
+      handleSubmit(message);
+    }
     setMessage("");
   };
 
