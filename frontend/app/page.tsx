@@ -1,7 +1,12 @@
+import ChatSubmit from "@/components/chat-submit";
 import React from "react";
 
 const Main = () => {
-  return <div className="m-3">Main</div>;
+  return (
+    <div>
+      <ChatSubmit />
+    </div>
+  );
 };
 
 export default Main;
