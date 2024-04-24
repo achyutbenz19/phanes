@@ -3,16 +3,17 @@ import { FormEvent, useState } from "react";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { ArrowUp, Mic } from "lucide-react";
-import { ChatInputProps } from "@/lib/types";
+import { useSocket } from "@/hooks/use-socket-store";
 
-const ChatInput = ({ handleSubmit }: ChatInputProps) => {
+const ChatInput = () => {
   const [message, setMessage] = useState("");
+  const { socket } = useSocket();
 
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
-    if (message.trim() !== "") {
-      handleSubmit(message);
-    }
+    if (!socket) return;
+    if (message.trim() !== "") return;
+    socket.send(JSON.stringify({ event: "prompt", prompt: message }));
     setMessage("");
   };
 
