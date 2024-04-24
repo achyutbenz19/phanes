@@ -1,5 +1,6 @@
 "use client";
 import { useSocket } from "@/hooks/use-socket-store";
+import { processLogs } from "@/lib/functions/process-logs";
 
 const Chats = () => {
   const { socket } = useSocket();
@@ -7,6 +8,8 @@ const Chats = () => {
   if (socket) {
     socket.onmessage = function (event) {
       console.log(event.data);
+      const result = processLogs(event.data);
+      console.log(result);
     };
   }
 

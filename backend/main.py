@@ -125,15 +125,16 @@ async def websocket_ep(websocket: WebSocket, client_id: Optional[str] = None):
     await manager.connect(websocket, client_id)
     browser.open_browser()
     try:
-        data = await websocket.receive_json()
-        print(data)
-        event = data["event"]
-        
-        if event == "prompt":
-            active_prompt = data["prompt"]
-            await navigate_ui(browser, websocket)
+        while True:
+            data = await websocket.receive_json()
+            print(data)
+            event = data["event"]
             
-        await manager.send_personal_message({"event": "done"}, websocket)
+            if event == "prompt":
+                active_prompt = data["prompt"]
+                await navigate_ui(browser, websocket)
+            
+            await manager.send_personal_message({"event": "done"}, websocket)
     except WebSocketDisconnect:
         print("Disconnecting...")
         await manager.disconnect(client_id)
