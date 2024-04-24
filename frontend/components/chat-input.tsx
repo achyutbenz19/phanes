@@ -12,7 +12,7 @@ const ChatInput = () => {
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
     if (!socket) return;
-    if (message.trim() !== "") return;
+    if (message.trim() === "") return;
     socket.send(JSON.stringify({ event: "prompt", prompt: message }));
     setMessage("");
   };
