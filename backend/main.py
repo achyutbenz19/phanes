@@ -4,7 +4,7 @@ from starlette.middleware.cors import CORSMiddleware
 from browser import BrowserAutomation
 from typing import Optional
 from manager import manager
-from gemini import *
+from generation import *
 import PIL.Image
 import asyncio
 
@@ -133,6 +133,11 @@ async def websocket_ep(websocket: WebSocket, client_id: Optional[str] = None):
             if event == "prompt":
                 active_prompt = data["prompt"]
                 await navigate_ui(browser, websocket)
+            elif event == "userAction":
+                selector = data["id"]
+                element = data["element"] 
+                print(selector)
+                print(element)
             
             await manager.send_personal_message({"event": "done"}, websocket)
     except WebSocketDisconnect:
