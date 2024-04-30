@@ -158,6 +158,8 @@ Example Output:
     </button>
     <input class="input classes here" style="background-color: #FFF">
 </div>
+
+ONLY GENERATE THE HTML CODE PLEASE
 """
 
 navigate_prompt = """
