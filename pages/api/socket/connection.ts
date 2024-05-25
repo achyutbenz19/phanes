@@ -13,7 +13,7 @@ export default async function handler(
     res?.socket?.server?.io?.emit("thought", {
       thought: "I'm interpreting the page...",
     });
-    return res.status(200).json("message");
+    return res.status(200).json({ message: "Message emitted" });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal Error" });

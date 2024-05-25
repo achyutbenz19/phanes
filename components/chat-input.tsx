@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { FormEventHandler, useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { ArrowUp } from "lucide-react";
@@ -7,11 +7,29 @@ import Microphone from "./microphone";
 
 const ChatInput = () => {
   const [message, setMessage] = useState("");
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    setMessage("");
+    try {
+      const response = await fetch("/api/socket/connection", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await response.json();
+      console.log("Dummy data emitted:", result);
+    } catch (error) {
+      console.error("Error emitting dummy data:", error);
+    }
+  };
+
   return (
     <div className="fixed inset-x-0 bottom-0 p-4">
       <form
         className="flex items-center w-full max-w-3xl mx-auto rounded-lg bg-neutral-900 p-2"
-        onSubmit={() => console.log("submitted")}
+        onSubmit={handleSubmit}
       >
         <Microphone />
         <Input
