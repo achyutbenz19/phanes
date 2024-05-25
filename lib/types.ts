@@ -14,3 +14,10 @@ export type SocketContextType = {
   socket: any | null;
   isConnected: boolean;
 };
+
+type SocketData = {
+  thought: string;
+  html: string;
+};
+
+export type PartialSocketData = Partial<SocketData>;
