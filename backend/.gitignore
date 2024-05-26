@@ -199,3 +199,4 @@ cython_debug/
 #.idea/
 .env
 output.html
+website.png

@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     if (!socket) {
       const rws = new ReconnectingWebSocket(
-        "ws://localhost:8000/ws?client_id=client-id"
+        "ws://localhost:8000/ws?client_id=client-id",
       );
       setSocket(rws);
     }
