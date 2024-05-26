@@ -12,14 +12,15 @@ const ChatInput = () => {
     e.preventDefault();
     setMessage("");
     try {
-      const response = await fetch("/api/socket/connection", {
+      await fetch("/api/socket/browser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          url: message,
+        }),
       });
-      const result = await response.json();
-      console.log("Dummy data emitted:", result);
     } catch (error) {
       console.error("Error emitting dummy data:", error);
     }
