@@ -2,6 +2,7 @@
 import { useSocket } from "@/hooks/use-socket-store";
 import { processLogs } from "@/lib/process-logs";
 import { useState } from "react";
+import BotMessage from "./bot-message";
 
 const Chats = () => {
   const [messages, setMessages] = useState<any>([]);
@@ -16,11 +17,11 @@ const Chats = () => {
         ...currentMessages,
         {
           display: thought ? (
-            <div>{thought}</div>
+            <BotMessage>{thought}</BotMessage>
           ) : html ? (
-            <div>
+            <div className="flex justify-center">
               <div
-                className="border"
+                className="flex items-center my-3 justify-center w-fit text-black border mx-auto"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
             </div>
@@ -31,9 +32,9 @@ const Chats = () => {
   }
 
   return (
-    <div>
+    <div className="m-3 max-h-[calc(100vh-150px)] w-full flex flex-col gap-2 overflow-y-scroll">
       {messages.map((message: any, index: number) => (
-        <div key={index}>{message.display}</div>
+        <div key={index}>{message.display && message.display}</div>
       ))}
     </div>
   );
