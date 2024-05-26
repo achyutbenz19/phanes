@@ -7,14 +7,18 @@ import { useEffect } from "react";
 import ReconnectingWebSocket from "reconnecting-websocket";
 
 export default function Home() {
-  const { setSocket } = useSocket();
+  const { socket, setSocket } = useSocket();
 
   useEffect(() => {
-    const rws = new ReconnectingWebSocket(
-      "ws://localhost:8000/ws?client_id=client-id",
-    );
-    setSocket(rws);
-  }, []);
+    console.log("hi")
+    if (!socket) {
+      console.log("bye")
+      const rws = new ReconnectingWebSocket(
+        "ws://localhost:8000/ws?client_id=client-id"
+      );
+      setSocket(rws);
+    }
+  }, [socket, setSocket]);
 
   return (
     <main>
