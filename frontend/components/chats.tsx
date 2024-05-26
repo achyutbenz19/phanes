@@ -1,9 +1,5 @@
 const Chats: React.FC = () => {
-  return (
-    <div>
-      chats
-    </div>
-  );
+  return <div>chats</div>;
 };
 
 export default Chats;
