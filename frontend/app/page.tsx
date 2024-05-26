@@ -10,9 +10,7 @@ export default function Home() {
   const { socket, setSocket } = useSocket();
 
   useEffect(() => {
-    console.log("hi")
     if (!socket) {
-      console.log("bye")
       const rws = new ReconnectingWebSocket(
         "ws://localhost:8000/ws?client_id=client-id"
       );

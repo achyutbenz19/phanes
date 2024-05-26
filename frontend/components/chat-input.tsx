@@ -4,13 +4,18 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { ArrowUp } from "lucide-react";
 import Microphone from "./microphone";
+import { useSocket } from "@/hooks/use-socket-store";
 
 const ChatInput = () => {
+  const { socket } = useSocket();
   const [message, setMessage] = useState("");
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     console.log(message);
+    if (!socket) return;
+    if (message.trim() === "") return;
+    socket.send(JSON.stringify({ event: "prompt", prompt: message }));
     setMessage("");
   };
 
