@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
-import { SocketProvider } from "@/providers/socket-provider";
 
 export const metadata: Metadata = {
   title: "phanes",
@@ -15,9 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={GeistSans.className}>
-        <SocketProvider>{children}</SocketProvider>
-      </body>
+      <body className={GeistSans.className}>{children}</body>
     </html>
   );
 }

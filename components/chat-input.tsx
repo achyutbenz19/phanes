@@ -10,20 +10,8 @@ const ChatInput = () => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    console.log(message);
     setMessage("");
-    try {
-      await fetch("/api/socket/browser", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          url: message,
-        }),
-      });
-    } catch (error) {
-      console.error("Error emitting dummy data:", error);
-    }
   };
 
   return (
