@@ -14,6 +14,14 @@ decorator==5.1.1
 exceptiongroup==1.2.1
 executing==2.0.1
 fastapi==0.110.2
+google==3.0.0
+google-ai-generativelanguage==0.6.2
+google-api-core==2.18.0
+google-api-python-client==2.126.0
+google-auth==2.29.0
+google-auth-httplib2==0.2.0
+google-generativeai==0.5.2
+googleapis-common-protos==1.63.0
 grpcio==1.62.2
 grpcio-status==1.62.2
 h11==0.14.0

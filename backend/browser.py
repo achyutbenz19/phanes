@@ -78,3 +78,6 @@ class BrowserAutomation:
         html_content = re.sub(r'<!DOCTYPE html>', '', html_content, flags=re.IGNORECASE)
         html_content = re.sub(r'[\n\r\t]+', '', html_content)
         return re.sub(r'[ ]{2,}', '  ', html_content)
+    
+    def close_browser(self):
+        self.browser.close()

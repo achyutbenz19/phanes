@@ -142,4 +142,5 @@ async def websocket_ep(websocket: WebSocket, client_id: Optional[str] = None):
             await manager.send_personal_message({"event": "done"}, websocket)
     except WebSocketDisconnect:
         print("Disconnecting...")
+        browser.close_browser()
         await manager.disconnect(client_id)

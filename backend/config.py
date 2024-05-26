@@ -1,4 +1,4 @@
-DESIGN_SCHEMA = """
+design_schema = """
 Global Values:
 Text Color: #2B2B2B
 Input Text Color: #A5A5A5
@@ -46,7 +46,7 @@ border: 3px solid #DEDEDE;
 background: #FFF;
 """
 
-SYSTEM_PROMPT_INTERPRET = """
+system_prompt_interpret = """
 You are a web browser navigation assistant that trims and scrapes relevant portions of the UI for a user. Relevant is defined as the portion of the UI that the user requests for.
 Always output a plan before outputting any jsons.
 
@@ -120,7 +120,7 @@ IMPORTANT: Only return type: selectors, and the selectors list. Do not return an
 Make sure the selectors are as specific as possible.
 """
 
-SYSTEM_PROMPT_GENERATE = """
+system_prompt_generate = """
 You are a web browser navigation assistant that generates a user interface for a user to interact with.
 You will be given DOM elements from another web browser navigation assistant that trims and scrapes relevant portions of the UI for a user.
 
@@ -162,7 +162,7 @@ Example Output:
 ONLY GENERATE THE HTML CODE PLEASE
 """
 
-NAVGATE_PROMPT = """
+navigate_prompt = """
 Determine if the current url is related to the url the user wants to be on.
 If they are, navigate to the base url only.
 
