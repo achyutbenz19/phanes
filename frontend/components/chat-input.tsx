@@ -12,7 +12,6 @@ const ChatInput = () => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    console.log(message);
     if (!socket) return;
     if (message.trim() === "") return;
     socket.send(JSON.stringify({ event: "prompt", prompt: message }));
