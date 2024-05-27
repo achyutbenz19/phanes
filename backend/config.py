@@ -1,6 +1,6 @@
 design_schema = """
 Global Values:
-Text Color: #2B2B2B
+Text Color: black
 Input Text Color: #A5A5A5
 Paragraph Color: #646464
 Background: #DEDEDE
@@ -8,29 +8,31 @@ Primary Color: #9F03FE
 Hover: #8200D1
 Text Family: Inter
 
+Gap between elements: 6px
+
 Heading Text
-color: #2B2B2B;
+color: black;
 font-weight: 700;
 
 Subheading Text:
-color: #646464;
+color: black;
 font-weight: 600;
 
 Paragraph Text:
-color: #646464;
+color: black;
 font-weight: 500;
 
 Subparagraph Text:
-color: #646464;
+color: black;
 font-weight: 500;
 
 Default Text:
-color: #646464;
+color: black;
 
 Primary Button:
 Border Radius: lg
-Background Color: #9F03FE;
-Text Color: #FFF;
+Background Color: white;
+Text Color: black;
 Text Font Weight: 500;
 
 Secondary Button:
@@ -43,7 +45,7 @@ Text Font Weight: 500;
 Input:
 border-radius: lg
 border: 3px solid #DEDEDE;
-background: #FFF;
+background: black;
 """
 
 system_prompt_interpret = """
