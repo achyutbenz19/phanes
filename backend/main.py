@@ -5,6 +5,7 @@ from browser import BrowserAutomation
 from typing import Optional
 from generation import *
 from connection import manager
+from time import sleep
 import PIL.Image
 import asyncio
 
@@ -136,8 +137,22 @@ async def websocket_ep(websocket: WebSocket, client_id: Optional[str] = None):
             elif event == "userAction":
                 selector = data["id"]
                 element = data["element"] 
-                print(selector)
-                print(element)
+                
+                if "value" in data:
+                    value = data["value"]
+                else:
+                    value = None
+                
+                if element == "button":
+                    browser.click(selector)
+                    sleep(1.5)
+                    await navigate_ui(browser, websocket)
+                elif element == "input":
+                    browser.type(selector, value)
+                else:
+                    print("Unknown element type")
+                
+                await manager.send_personal_message({"event": "done"}, websocket)
             
             await manager.send_personal_message({"event": "done"}, websocket)
     except WebSocketDisconnect:

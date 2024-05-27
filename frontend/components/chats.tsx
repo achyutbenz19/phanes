@@ -25,7 +25,7 @@ const Chats = () => {
       sendSocketMessage(socket, {
         event: "userAction",
         id: id,
-        element: "button lol",
+        element: "button",
         value: undefined,
       });
     };
@@ -86,7 +86,7 @@ const Chats = () => {
             <div className="flex justify-center">
               <div
                 ref={containerRef}
-                className="flex items-center my-3 justify-center w-fit text-black border mx-auto"
+                className="flex items-center my-3 justify-center w-fit text-black mx-auto"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
             </div>
