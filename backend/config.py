@@ -1,10 +1,11 @@
 design_schema = """
 Global Values:
 Text Color: black
-Input Text Color: #A5A5A5
-Paragraph Color: #646464
-Background: #DEDEDE
-Primary Color: #9F03FE
+Input Text Color: gray
+Text Placeholder: white
+Paragraph Color: white
+Background: black
+Primary Color: black
 Hover: #8200D1
 Text Family: Inter
 
@@ -37,14 +38,14 @@ Text Font Weight: 500;
 
 Secondary Button:
 Border Radius: lg
-Border: 3px solid #DEDEDE;
-Background Color: $F5F4F7;
-Text Color: #2B2B2B;
+Border: 3px solid black;
+Background Color: black;
+Text Color: white;
 Text Font Weight: 500;  
 
 Input:
 border-radius: lg
-border: 3px solid #DEDEDE;
+border: 3px solid black;
 background: black;
 """
 
