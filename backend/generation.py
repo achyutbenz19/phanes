@@ -2,19 +2,23 @@ import google.generativeai as genai
 import ast
 import os
 import json
-from browser import BrowserAutomation
+import random
 import re
+from browser import BrowserAutomation
 from config import *
 from dotenv import load_dotenv
 
 load_dotenv()
 
-GEMINI_API_KEY = os.environ.get("GOOGLE_GENERATIVE_AI_API_KEY")
+def get_key():
+    api_keys = os.getenv("GOOGLE_GENERATIVE_AI_API_KEYS")
+    api_keys_list = api_keys.split(", ")
+    return random.choice(api_keys_list)
 
 def generate_content(prompt, image=None):
     global messages
     
-    api_key = GEMINI_API_KEY
+    api_key = get_key()
 
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel(
@@ -65,7 +69,7 @@ def interpret(prompt, url, html_string, img):
 
 def navigate_check(prompt, url):
     global messages
-    api_key = GEMINI_API_KEY
+    api_key = get_key()
 
     user_prompt = f"""
         {navigate_prompt}
