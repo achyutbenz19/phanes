@@ -10,12 +10,21 @@ const ChatInput = () => {
   const { socket } = useSocket();
   const [message, setMessage] = useState("");
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
+  const handleTranscription = async (transcription: string) => {
+    setMessage(transcription);
+    await submit(transcription);
+  };
+
+  const submit = async (message: string) => {
     if (!socket) return;
     if (message.trim() === "") return;
     socket.send(JSON.stringify({ event: "prompt", prompt: message }));
     setMessage("");
+  };
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    await submit(message);
   };
 
   return (
@@ -24,7 +33,7 @@ const ChatInput = () => {
         className="flex items-center w-full max-w-3xl mx-auto rounded-lg bg-neutral-900 p-2"
         onSubmit={handleSubmit}
       >
-        <Microphone />
+        <Microphone onTranscription={handleTranscription} />
         <Input
           value={message}
           onChange={(e) => setMessage(e.target.value)}

@@ -42,7 +42,6 @@ const Microphone: React.FC<MicrophoneProps> = ({ onTranscription }) => {
         formData.append("audio", audioBlob);
         const timestamp = Date.now();
         const transcription = await transcribeAudio(formData, timestamp);
-        console.log(transcription)
         onTranscription(transcription);
         chunksRef.current = [];
       });
