@@ -3,11 +3,12 @@ import ChatInput from "@/components/chat-input";
 import Chats from "@/components/chats";
 import Header from "@/components/header";
 import { useSocket } from "@/hooks/use-socket-store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ReconnectingWebSocket from "reconnecting-websocket";
 
 export default function Home() {
   const { socket, setSocket } = useSocket();
+  const [messages, setMessages] = useState<any>([]);
 
   useEffect(() => {
     if (!socket) {
@@ -21,8 +22,8 @@ export default function Home() {
   return (
     <main>
       <Header />
-      <Chats />
-      <ChatInput />
+      <Chats messages={messages} setMessages={setMessages} />
+      <ChatInput messages={messages} />
     </main>
   );
 }

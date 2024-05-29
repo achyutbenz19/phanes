@@ -3,13 +3,13 @@ import { useSocket } from "@/hooks/use-socket-store";
 import { processLogs } from "@/lib/process-logs";
 import { useEffect, useRef, useState } from "react";
 import BotMessage from "./bot-message";
+import { ChatsProps } from "@/lib/types";
 
 export const sendSocketMessage = (socket: any, message: any) => {
   socket.send(JSON.stringify(message));
 };
 
-const Chats = () => {
-  const [messages, setMessages] = useState<any>([]);
+const Chats = ({ messages, setMessages }: ChatsProps) => {
   const { socket } = useSocket();
   const containerRef = useRef<HTMLDivElement>(null);
 
