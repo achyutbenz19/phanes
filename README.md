@@ -30,7 +30,7 @@ Personalized, seamless web journey
     # or
     pnpm dev
     # or
-    bun dev
+    bun run dev
     ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
