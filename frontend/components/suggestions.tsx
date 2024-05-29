@@ -2,7 +2,7 @@ import { ClickProps } from "@/lib/types";
 
 export const suggestions = [
   { text: "Order Dominos pizza.", emoji: "🍕" },
-  { text: "I want to get some Starbucks.", emoji: "☕" },
+  { text: "I want to get some Dunkin Donuts.", emoji: "☕" },
   { text: "Order protein powder from Gymsharks.", emoji: "💪" },
   { text: "Visit youlearn.ai", emoji: "☘️" },
 ];

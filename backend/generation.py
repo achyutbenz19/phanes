@@ -13,7 +13,7 @@ load_dotenv()
 def get_key():
     api_keys = os.getenv("GOOGLE_GENERATIVE_AI_API_KEYS")
     api_keys_list = api_keys.split(", ")
-    return random.choice(api_keys_list)
+    return random.choice(api_keys_list).strip()
 
 def generate_content(prompt, image=None):
     global messages

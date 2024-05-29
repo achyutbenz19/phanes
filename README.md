@@ -12,7 +12,7 @@ To integrate various AI services, you'll need to set up API keys. Insert your AP
 1. **Google Generative AI API Keys**:
     - Obtain your API keys from [Google AI Studio](https://aistudio.google.com/app/apikey)
       ```bash
-      GOOGLE_GENERATIVE_AI_API_KEYS=[<insert_key>, <insert_key>, <insert_key>, <insert_key>, ...]
+      GOOGLE_GENERATIVE_AI_API_KEYS=<insert_key>, <insert_key>, <insert_key>, <insert_key>, ...
       ```
 
 2. **Groq API Key**:
