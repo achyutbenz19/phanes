@@ -2,8 +2,8 @@ design_schema = """
 Global Values:
 Text Color: black
 Input Text Color: gray
-Text Placeholder: white
-Paragraph Color: white
+Text Placeholder: gray
+Paragraph Color: gray
 Background: black
 Primary Color: black
 Hover: #8200D1
@@ -32,7 +32,7 @@ color: black;
 
 Primary Button:
 Border Radius: lg
-Background Color: white;
+Background Color: gray;
 Text Color: black;
 Text Font Weight: 500;
 
@@ -40,7 +40,7 @@ Secondary Button:
 Border Radius: lg
 Border: 3px solid black;
 Background Color: black;
-Text Color: white;
+Text Color: gray;
 Text Font Weight: 500;  
 
 Input:
