@@ -4,7 +4,8 @@ Personalized, seamless web journey
 
 ### Getting Started
 
-### API Keys Configuration
+
+#### Frontend Setup
 
 To integrate various AI services, you'll need to set up API keys. Insert your API keys in the appropriate environment variables.
 
