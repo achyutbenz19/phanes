@@ -44,7 +44,7 @@ async def navigate_ui(browser, websocket):
                         {
                             "event": "thought",
                             "data": {
-                                "thought": f"I'm navigating to {nav['url']}",
+                                "thought": f"Navigating to {nav['url']}",
                             },
                         },
                         websocket,
@@ -66,7 +66,7 @@ async def navigate_ui(browser, websocket):
                     {
                         "event": "thought",
                         "data": {
-                            "thought": "I'm interpreting the page...",
+                            "thought": "Interpreting the page",
                         },
                     },
                     websocket,
@@ -80,7 +80,7 @@ async def navigate_ui(browser, websocket):
                     {
                         "event": "thought",
                         "data": {
-                            "thought": "I'm generating the UI...",
+                            "thought": "Generating the UI",
                         },
                     },
                     websocket,
