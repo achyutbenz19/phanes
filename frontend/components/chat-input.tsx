@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { ArrowUp } from "lucide-react";
 import Microphone from "./microphone";
 import { useSocket } from "@/hooks/use-socket-store";
+import Suggestions from "./suggestions";
 
 const ChatInput = () => {
   const { socket } = useSocket();
@@ -29,8 +30,11 @@ const ChatInput = () => {
 
   return (
     <div className="fixed inset-x-0 bottom-0 p-4">
+      <div className="max-w-3xl mx-auto">
+        <Suggestions handleClick={submit} />
+      </div>
       <form
-        className="flex items-center w-full max-w-3xl mx-auto rounded-lg bg-neutral-900 p-2"
+        className="flex items-center mt-3 w-full max-w-3xl mx-auto rounded-lg bg-neutral-900 p-2"
         onSubmit={handleSubmit}
       >
         <Microphone onTranscription={handleTranscription} />
