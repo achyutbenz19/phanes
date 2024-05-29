@@ -31,7 +31,7 @@ const ChatInput = ({ messages }: ChatInputProps) => {
 
   return (
     <div className="fixed inset-x-0 bottom-0 p-4">
-      {!messages && (
+      {messages.length === 0 && (
         <div className="max-w-3xl mx-auto">
           <Suggestions handleClick={submit} />
         </div>
